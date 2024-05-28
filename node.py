@@ -1,8 +1,7 @@
 from PIL import Image, ImageOps
 from io import BytesIO
 import numpy as np
-import struct
-import comfy.utils
+import requests
 import time
 
 #You can use this node to save full size images through the websocket, the
@@ -16,7 +15,7 @@ class SendHttpRequest:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {"images": ("IMAGE", ),
-                              "text1": ("STRING", {"multiline": False, "default": "Hello"}),
+                              "url": ("STRING", {"multiline": False, "default": "https:yourdomain..."}),
                              },
                
                 }
@@ -28,13 +27,12 @@ class SendHttpRequest:
 
     CATEGORY = "api/image"
 
-    def save_images(self, images):
-        pbar = comfy.utils.ProgressBar(images.shape[0])
+    def save_images(self, images, url):
         step = 0
         for image in images:
             i = 255. * image.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
-            pbar.update_absolute(step, images.shape[0], ("PNG", img, None))
+            requests.post(url,data=img)
             step += 1
 
         return {}
