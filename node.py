@@ -16,7 +16,11 @@ class SendHttpRequest:
     @classmethod
     def INPUT_TYPES(s):
         return {"required":
-                    {"images": ("IMAGE", ),}
+                    {"images": ("IMAGE", ),},
+                "url": ("STRING", {
+                    "multiline": False, 
+                    "default": "Hello World!"
+                }),
                 }
 
     RETURN_TYPES = ()
