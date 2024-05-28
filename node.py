@@ -17,10 +17,18 @@ class SendHttpRequest:
     def INPUT_TYPES(s):
         return {"required":
                     {"images": ("IMAGE", ),},
+                
                 "url": ("STRING", {
                     "multiline": False, 
                     "default": "Hello World!"
                 }),
+                "float_field": ("FLOAT", {
+                    "default": 1.0,
+                    "min": 0.0,
+                    "max": 10.0,
+                    "step": 0.01,
+                    "round": 0.001, #The value represeting the precision to round to, will be set to the step value by default. Can be set to False to disable rounding.
+                    "display": "number"}),
                 }
 
     RETURN_TYPES = ()
