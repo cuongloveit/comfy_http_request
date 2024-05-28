@@ -1,6 +1,6 @@
 
 
-from node import SendHttpRequest
+from .node import SendHttpRequest
 
 
 NODE_CLASS_MAPPINGS = { 
