@@ -1,0 +1,14 @@
+[project]
+name = "comfy_http_request"
+description = "Nodes:Send Http Request. You can use this node to save full size images through the websocket."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/cuongloveit/comfy_http_request"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "comfy_http_request"
+Icon = ""
